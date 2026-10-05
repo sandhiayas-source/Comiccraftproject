@@ -1,10 +1,31 @@
-streamlit>=1.38,<2
-fastapi>=0.115,<1
-uvicorn[standard]>=0.30,<1
-pydantic>=2.8,<3
-python-dotenv>=1.0,<2
-httpx>=0.27,<1
-openai>=1.50,<3
-Pillow>=10,<12
-reportlab>=4,<5
-requests>=2.32,<3
+expenses = []
+
+while True:
+    print("\n1. Add Expense")
+    print("2. View Expenses")
+    print("3. Total")
+    print("4. Exit")
+
+    choice = input("Choose: ")
+
+    if choice == "1":
+        item = input("Expense name: ")
+        amount = float(input("Amount: "))
+        expenses.append((item, amount))
+        print("Expense added!")
+
+    elif choice == "2":
+        for item, amount in expenses:
+            print(f"{item}: ₹{amount:.2f}")
+
+    elif choice == "3":
+        total = sum(amount for _, amount in expenses)
+        print(f"Total: ₹{total:.2f}")
+
+    elif choice == "4":
+        print("Thank you!")
+        break
+
+    else:
+        print("Invalid choice!")
+
